@@ -1,0 +1,253 @@
+Backup file :- C:\Program Files\PostgreSQL\13\bin>psql -U postgres -d postgres -h localhost -p 5432 -f D:\RGSA_DB\rgsa_09_bkp (.sql/backup)
+File:- C:\Program Files\PostgreSQL\13\bin>pg_restore -U postgres -d postgres -h localhost -p 5432 -v D:\RGSA_DB\dump-postgres-202505091224
+DMP:- pg_restore -U postgres -d postgres -h localhost -p 5432 -v "D:\RGSA_DB\rgsa_schema_rgsa_03-12-2025.dmp
+
+pg_restore -U postgres -d postgres -h localhost -p 5432 -v D:\RGSA_DB\rgsa_schema_rgsa_08-27-2025.dmp
+
+TMP: pg_restore -U postgres -d postgres -h localhost -p 5432 -v D:\RGSA_DB\TMP_DB\training_schema_pes_05-26-2025.dmp
+
+
+pescommon_pes_backup_20230120
+pg_restore -U postgres -d postgres -h localhost -p 5432 -v D:\RGSA_DB\rgsa_30052025
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+check logs 
+1. ls -l
+2. tail -n 100
+3. cat /opt/rgpsa/tomcat-8-rgsa/logs/catalina.out
+
+
+pg_restore.exe -h 10.25.85.239 -U postgres -d postgres_live -p 5432 -v "D:\SHIV\db_backup\dbbackup03-24-2025\rgsa_schema_rgsa_03-24-2025.dmp"
+
+pg_restore.exe -h 127.0.0.1 -U postgres -d rgsa2023_24 -p 5432 -v "D:\SHIV\db_backup\dbbackup02-21-2025\rgsa_schema_rgsa_02-25-2025.dmp"
+
+
+/usr/pgsql-13/bin/pg_restore -U postgres -d rgsa_demo -v "/tmp/rgsa_schema_rgsa_06-23-2025.dmp"
+
+sql file :- psql -p 5432 -U postgres -d rgsa_demo -f /tmp/rgsq_bkp_09.sql
+
+
+------------------------------------------------------------------------------------
+
+netstat -ano | findstr :8080
+taskkill /PID <PID> /F
+
+cat Catalina.out
+tail -n 100 Catalina.out
+tail -f Catalina.out
+
+
+
+whoami ==> user name
+date ==> date
+cal ==> calendar
+pwd ==> current working directory
+mkdir ==> create new directory
+rmdir ==> remove directory
+cd ==> change directory
+cd .. ==> change to previous directory
+cd /.. ==> change to root directory
+ls ==> list all files
+ls -l ==>see all file as list
+cat ==> crate file with content and display file content
+cat > f1.txt ==> previous data will be lost
+cat >> f1.txt ==> data will be appended
+mv ==> rename the file (mv f1.txt shiv.txt)
+cp ==> copy data from one file to other file
+cp -r d_directory f_directory ==> copy c_directory into f_directory
+wc ==> word count into a file (lines words characters)
+head ==> first 10 lines of the file
+head -n 100 f1.txt ==> first 100 lines of the file(f1.txt)
+tail ==> last 10 lines of the file
+tail -n 100 f1.txt ==> last 100 lines of the file (f1.txt)
+touch ==> create a file
+rm ==> remove a file
+rm -r ==> remove a directory
+rm -rf ==> remove non empty directory.
+
+
+
+## Install Docker In Amazon Linux VM
+
+```
+sudo yum update -y 
+sudo yum install docker -y
+sudo service docker start
+sudo usermod -aG docker ec2-user
+exit
+
+
+
+## Install Docker In Ubuntu VM
+
+```
+sudo apt update
+curl -fsSL get.docker.com | /bin/bash
+sudo usermod -aG docker ubuntu 
+exit
+```
+
+
+sudo docker pull docker/welcome-to-docker
+sudo docker images
+sudo docker rmi <image-name/image-id>
+sudo docker ps -- running conatiners
+sudo docker ps -a --all containers
+sudo docker rm <conatiner-name/container-id>
+sudo docker rm 18766a50e985 -f
+docker run -d -p 8088:80 --name welcome-to-docker docker/welcome-to-docker
+
+sudo docker build -t <image-name> .
+sudo docker build -t <image-name> . -f <docker-file-name>
+sudo docker tag <image-name> <user-name>/<image-name>
+sudo docker login
+sudo docker login -u <user-name>
+sudo docker push <tag-name>
+
+sudo docker exec -it <container-id> bin/bash
+sudo docker exec -it <container-id> sh
+
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.23.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+
+sudo docker-compose up ==> create the container
+sudo docker-compose up -d
+sudo docker-compose down
+sudo docker-compose start
+sudo docker-compose stop
+sudo docker-compose ps
+sudo docker-compose up --scale rest-api=3 -d
+
+docker stop $(docker ps -q) ==> stop all container at once
+
+docker exec -it <container_name> mysql -u<username> -p
+mysql -h 54.209.158.239 -P 3306 -u<root> -p
+
+========================Docker Swarm Cluster================================
+docker swarm init --advertise-addr 192.168.99.121
+
+Swarm initialized: current node (bvz81updecsj6wjz393c09vti) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-3pu6hszjas19xyp7ghgosyx9k8atbfcr8p2is99znpy26u2lkl-1awxwuwd3z9j1z3puu7rcgdbx 172.17.0.2:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
+
+docker swarm join-token worker
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-3pu6hszjas19xyp7ghgosyx9k8atbfcr8p2is99znpy26u2lkl-1awxwuwd3z9j1z3puu7rcgdbx 172.17.0.2:2377
+
+docker swarm join-token manager
+
+To add a manager to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-3pu6hszjas19xyp7ghgosyx9k8atbfcr8p2is99znpy26u2lkl-7p73s1dx5in4tatdymyhg9hu2 172.17.0.2:2377
+sudo docker swarm leave --force
+
+docker service create --name spring-web-app --publish 8080:8080 shiv4z/spring-web-app
+sudo docker service ps spring-web-app
+sudo docker service rm spring-web-app
+docker node ls
+docker node update --availability drain ip-172-31-28-83.ec2.internal
+
+=========================Kubernetes cluster setup============================
+Step - 1 : Create EKS Management Host in AWS
+
+Launch new Ubuntu VM using AWS Ec2 ( t2.micro )
+Connect to machine and install kubectl using below commands
+curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin
+kubectl version --short --client
+Install AWS CLI latest version using below commands
+sudo apt install unzip
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws --version
+Install eksctl using below commands
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+eksctl version
+
+
+Step - 2 : Create IAM role & attach to EKS Management Host
+
+Create New Role using IAM service ( Select Usecase - ec2 )
+
+Add below permissions for the role
+
+IAM - fullaccess
+VPC - fullaccess
+EC2 - fullaccess
+CloudFomration - fullaccess
+Administrator - acces
+Enter Role Name (eksroleec2)
+
+Attach created role to EKS Management Host (Select EC2 => Click on Security => Modify IAM Role => attach IAM role we have created)
+
+
+Step - 3 : Create EKS Cluster using eksctl
+
+Syntax:
+
+eksctl create cluster --name cluster-name
+--region region-name
+--node-type instance-type
+--nodes-min 2
+--nodes-max 2 \ --zones ,
+
+eksctl create cluster --name shivp-cluster --region ap-south-1 --node-type t2.medium  --zones ap-south-1a,ap-south-1b
+
+
+aws eks list-clusters --region ap-south-1 ==> list all the clusters
+for cluster in $(aws eks list-clusters --region ap-south-1 --query "clusters[]" --output text); do
+  echo "Deleting cluster: $cluster"
+  aws eks delete-cluster --name $cluster --region ap-south-1
+done
+===>deleting all the clusters 
+
+
+delete the cluster
+==================
+
+eksctl delete cluster --name shivp-cluster --region ap-south-1
+
+
+kubectl config get-contexts ==> all the running clusters
+
+=========
+database
+=========
+psql -h 10.248.213.206 -U postgres -d rgsa_demo
+\dn ==> list all the schema
+SET search_path TO rgsa; ==>setting schema
+SHOW search_path; ==> show current schema
+/dt ==> list all the tables
+
+
+======================================
+ps -eLf | grep tomcat | wc -l ==> total number of running tomcat thread
+ps -ef | grep tomcat  ==> tomcat process id
+jstack -l <PID> > thread_dump.txt  ==> thread dump
+
+
+ssh username@target_server_ip   ==> switching user
+
+==================
+Portrainer setup
+=================
+
+docker volume create portainer_data
+
+docker run -d -p 9000:9000 -p 9443:9443 \
+    --name portainer \
+    --restart=always \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v portainer_data:/data \
+    portainer/portainer-ce

@@ -1,0 +1,299 @@
+Backup file :- C:\Program Files\PostgreSQL\13\bin>psql -U postgres -d postgres -h localhost -p 5432 -f D:\RGSA_DB\rgsa_09_bkp (.sql/backup)
+File:- C:\Program Files\PostgreSQL\13\bin>pg_restore -U postgres -d postgres -h localhost -p 5432 -v D:\RGSA_DB\dump-postgres-202505091224
+DMP:- pg_restore -U postgres -d postgres -h localhost -p 5432 -v "D:\RGSA_DB\rgsa_schema_rgsa_03-12-2025.dmp
+
+pg_restore -U postgres -d accounting -h localhost -Fd -p 5432 -j 8 -v D:\RGSA_DB\ACCOUNTING\accountingonline_mp__18122025
+
+pg_restore -U postgres -d postgres -h localhost -p 5432 -v D:\RGSA_DB\RGSA_01\rgsa_live_28112025.dump
+
+psql -U postgres -d accounting -h localhost -p 5432 -f D:\RGSA_DB\PESA_Portal\dump-pes-202512111256.sql
+
+psql -U postgres -d secure_himachal_pradesh -h localhost -p 5432 -f D:\RGSA_DB\SECURESOFT\secure_himachal_pradesh_31.sql
+
+pg_restore -U postgres -d postgres -h localhost -p 5432 -v D:\RGSA_DB\RGSA_01\rgsa_11112025.dump
+
+D:\RGSA_DB\SECURESOFT\structure
+
+
+TMP: pg_restore -U postgres -d postgres -h localhost -p 5432 -v D:\RGSA_DB\TMP_DB\rgsa_schema_rgsa_07-01-2025.dmp
+psql -U postgres -d postgres -h localhost -p 5432 -f D:\RGSA_DB\rgsa_schema_bkp.sql
+
+psql -U postgres -d postgres_live_2.0 -h localhost -p 5432 -f C:\Users\admin\Documents\RGSADOCS\RGSA_DB\rgsa_sc.backup
+
+pescommon_pes_backup_20230120
+pg_restore -U postgres -d postgres -h localhost -p 5432 -v D:\RGSA_DB\rgsa_30052025
+
+pg_restore -U postgres -d postgres -h localhost -p 5432 -v D:\RGSA_DB\rgsa_schema_rgsa_07-01-2025.dmp
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+check logs 
+1. ls -l
+2. tail -n 100
+3. cat /opt/rgpsa/tomcat-8-rgsa/logs/catalina.out 			 	
+
+---- Database Restored -------------------------
+/usr/pgsql-14/bin/pg_restore -U postgres -d secure_odisha -v "/tmp/dump-secure_odisha_22-202511211757.sql"
+
+--------------
+sql file :- psql -p 5432 -U postgres -d rgsa_demo -f /tmp/rgsq_bkp_09.sql
+
+pg_dump -U postgres -d rgsa_demo -n rgsa -F c -f /tmp/rgsa.dump
+
+----------------------------------------------------------------------------
+
+[root@epanchayat-208 ~]# ssh root@ 10.248.213.143
+root@10.248.213.143's password:
+[root@e-panchayat143 ~]# su postgres
+[postgres@e-panchayat143 root]$ psql
+Password for user postgres:
+[postgres@e-panchayat143 root]$ psql -p 5433
+postgres=#
+postgres=# \c rgsa
+
+----------------------------------------------------------------------------
+
+[postgres@e-panchayat143 root]$ cd /usr/pgsql-14/bin/
+[postgres@e-panchayat143 bin]$ ./pg_dump -U postgres -v -d rgsa -n rgsa -Fc > /tmp/rgsa_22092025.dump
+Password:
+pg_dump: error: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  database "rgsa" does not exist
+[postgres@e-panchayat143 bin]$ ./pg_dump -U postgres -p 5433 -v -d rgsa -n rgsa -Fc > /tmp/rgsa_live_09122025.dump
+
+cd /tmp/
+[postgres@e-panchayat143 tmp]$ rsync -aprv rgsa_live_09122025.dump root@10.248.213.206:/tmp/
+root@10.248.213.208's password:
+sending incremental file list
+rgsa_06082025.dump
+
+------------------------------------- Database Backup ----------------------------------------------------
+
+pg_dump -U postgres -n rgsa -F c -f /tmp/rgsa_demo_11112025.dump rgsa_demo
+pg_dump -U postgres -d rgsa_demo -F c -f /tmp/rgsa_demo.dump
+pg_dump -U postgres -d rgsa_demo -t users -F c -f /tmp/users.dump
+
+-----------------------------------------------------
+
+sh /opt/rgsademo/tomcat-8-rgsa/bin/shutdown.sh
+sh /opt/rgsademo/tomcat-8-rgsa/bin/startup.sh
+----------------------------------------------------------------------------
+#$!%demo@798
+
+#$%lgd*798
+Using username "root".
+root@10.248.213.206's password:
+Register this system with Red Hat Insights: insights-client --register
+Create an account or view all your systems at https://red.ht/insights-dashboard
+Activate the web console with: systemctl enable --now cockpit.socket
+Last login: Wed Apr  2 16:01:02 2025
+
+[root@epanchayat-206 ~]# psql -h 10.248.213.206 -U postgres -d rgsa_demo
+Password for user postgres:
+rgsa_demo=# select * from get_dynamic_lb_hierarchy(17);
+                  phierarchy_name                   | plocal_body_setup_version | plocal_body_setup_code | phierarchy_type
+----------------------------------------------------+---------------------------+------------------------+-----------------
+                                                    |                         1 |                     81 |
+ Municipal Board / Town Committee                   |                         1 |                     34 | U
+ Area Employment Council/Village Employment council |                         2 |                     33 | T
+ Autonomous District Council                        |                         1 |                     86 | T
+(4 rows)
+
+rgsa_demo=# exit
+[root@epanchayat-206 ~]# psql -h 10.248.213.206 -U postgres -d rgsa_staging
+Password for user postgres:
+psql (14.8)
+
+[root@epanchayat-208 ~]# ssh root@10.248.213.143
+root@10.248.213.143's password:
+Activate the web console with: systemctl enable --now cockpit.socket
+
+Register this system with Red Hat Insights: insights-client --register
+Create an account or view all your systems at https://red.ht/insights-dashboard
+Last failed login: Wed Apr  2 17:02:03 IST 2025 from 10.248.213.206 on ssh:notty
+There were 2 failed login attempts since the last successful login.
+Last login: Wed Apr  2 16:23:23 2025
+[root@e-panchayat143 ~]# su postgres
+[postgres@e-panchayat143 root]$ psql -p 5433
+psql (16.3, server 14.8)
+Type "help" for help.
+
+postgres=# select * from get_dynamic_lb_hierarchy(17);
+ERROR:  function get_dynamic_lb_hierarchy(integer) does not exist
+LINE 1: select * from get_dynamic_lb_hierarchy(17);
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+postgres=# \c rgsa
+psql (16.3, server 14.8)
+You are now connected to database "rgsa" as user "postgres".
+rgsa=# select * from get_dynamic_lb_hierarchy(17);
+                  phierarchy_name                   | plocal_body_setup_version | plocal_body_setup_code | phierarchy_type
+----------------------------------------------------+---------------------------+------------------------+-----------------
+                                                    |                         1 |                     81 |
+ Municipal Board / Town Committee                   |                         1 |                     34 | U
+ Area Employment Council/Village Employment council |                         2 |                     33 | T
+ Autonomous District Council                        |                         1 |                     86 | T
+(4 rows)
+
+
+nic12345
+
+----------------------------------
+
+svn second branch 2022-2023 https://10.247.187.167/svnroot/RGPSA/rgsa_2023/rgsa_sep2023		
+
+svn New Barach 2023-2024 : https://10.247.187.167/svnroot/RGPSA/rgsa_2023/rgsa_nov2023/rgsa 
+
+
+C:\Program Files\PostgreSQL\13\bin>pg_restore -U postgres -d postgres -h localhost -p 5432 -f D:\RGSA_DB\rgsa_schema_rgsa_05-23-2025.dmp
+			
+
+			
+			
+how to add new project in existing repo 
+
+1. git add prject_name (git add OTTProject)
+
+2. git commit -m "Added OTTProject module"
+
+3. git push origin main
+
+
+sudo docker pull shiv4z/keycloak-image
+
+SELECT COUNT(*) 
+FROM information_schema.tables 
+WHERE table_schema = 'rgsa' AND table_type = 'BASE TABLE';
+
+10006
+10434
+10435
+10436
+10437
+10438
+10439
+10440
+10441
+10442
+10443
+10444
+10445
+10446
+10447
+10448
+
+10450
+10451
+10452
+10453
+10454
+10455
+10456
+10457
+10458
+10459
+10460
+10461
+10462
+10463
+10464
+10465
+10466
+10467
+10468
+10469
+10470
+10471
+10472
+10473
+10474
+
+
+COPY public.m_dsor (dbgen_id,dsortype_code,dsor_code,dsor_description,unit_code,rate,entered_by,entered_date,verfied_by,verified_date,approved_by,approved_date,status) FROM 'D:\RGSA_DB\SECURESOFT\LMR_WORK\MATERIALS_Odisha.csv' DELIMITER ','CSV HEADER;
+
+
+COPY public.m_dsor_wo_ci (dsortype_code,dsor_code,dsor_description,unit_code,rate,entered_by,entered_date,cost_index,type,change_un_ss_date,change_type) FROM 'D:\RGSA_DB\SECURESOFT\LMR_WORK\WO_CI_Labour.csv' DELIMITER ','CSV HEADER;
+
+
+============================================= LOCAL CMD ======================================================
+
+D:\Program Files\PostgreSQL\13\bin>psql
+psql: error: FATAL:  role "admin" does not exist
+
+D:\Program Files\PostgreSQL\13\bin>
+D:\Program Files\PostgreSQL\13\bin>
+D:\Program Files\PostgreSQL\13\bin>psql -U postgres
+psql (13.6)
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=# \l+
+                                                                                  List of databases
+          Name           |  Owner   | Encoding |      Collate       |       Ctype        |   Access privileges   |  Size   | Tablespace |                Description
+-------------------------+----------+----------+--------------------+--------------------+-----------------------+---------+------------+--------------------------------------------
+ accounting              | postgres | UTF8     | English_India.1252 | English_India.1252 |                       | 209 GB  | pg_default |
+ graphql                 | postgres | UTF8     | English_India.1252 | English_India.1252 |                       | 7809 kB | pg_default |
+ postgres                | postgres | UTF8     | English_India.1252 | English_India.1252 |                       | 17 GB   | pg_default | default administrative connection database
+ secure_audit            | postgres | UTF8     | English_India.1252 | English_India.1252 |                       | 12 MB   | pg_default |
+ secure_himachal_pradesh | postgres | UTF8     | English_India.1252 | English_India.1252 |                       | 456 MB  | pg_default |
+ secure_main             | postgres | UTF8     | English_India.1252 | English_India.1252 |                       | 21 MB   | pg_default |
+ secure_odisha           | postgres | UTF8     | English_India.1252 | English_India.1252 |                       | 8421 kB | pg_default |
+ secure_odisha_22        | postgres | UTF8     | English_India.1252 | English_India.1252 |                       | 6491 MB | pg_default |
+ secure_reporting        | postgres | UTF8     | English_India.1252 | English_India.1252 |                       | 34 MB   | pg_default |
+ template0               | postgres | UTF8     | English_India.1252 | English_India.1252 | =c/postgres          +| 7753 kB | pg_default | unmodifiable empty database
+                         |          |          |                    |                    | postgres=CTc/postgres |         |            |
+ template1               | postgres | UTF8     | English_India.1252 | English_India.1252 | =c/postgres          +| 7753 kB | pg_default | default template for new databases
+                         |          |          |                    |                    | postgres=CTc/postgres |         |            |
+(11 rows)
+
+
+postgres=#
+postgres=#
+postgres=#
+postgres=# \c secure_odisha_22
+You are now connected to database "secure_odisha_22" as user "postgres".
+secure_odisha_22=#
+secure_odisha_22=#
+secure_odisha_22=#
+secure_odisha_22=#
+secure_odisha_22=# \dn
+    List of schemas
+    Name    |  Owner
+------------+----------
+ lgd        | postgres
+ public     | postgres
+ public_1   | postgres
+ public_old | postgres
+(4 rows)
+
+
+secure_odisha_22=#
+secure_odisha_22=#
+secure_odisha_22=# \dt public.*
+
+=============================
+
+
+---Message start-----
+Subject: Welcome to SecureSoft!
+
+Body:
+Dear {User name Placeholder},
+
+Your account on the SecureSoft platform has been successfully created. Please find the details of your account below:
+
+State: {state placeholder}
+Username: {username placeholder}
+
+Designation: {designation placeholder}
+
+Password: {password placeholder}
+
+For any assistance or inquiries, please contact our support team at {email id placeholder@gov.in/nic.in}.
+
+
+Thank you,
+SecureSoft Team
