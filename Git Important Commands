@@ -1,0 +1,5 @@
+
+If you want revert all changes and commit
+------------------------------------------
+git reset --hard HEAD~1
+git push --force
