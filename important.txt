@@ -1,6 +1,8 @@
 Backup file :- C:\Program Files\PostgreSQL\13\bin>psql -U postgres -d postgres -h localhost -p 5432 -f D:\RGSA_DB\rgsa_09_bkp (.sql/backup)
 File:- C:\Program Files\PostgreSQL\13\bin>pg_restore -U postgres -d postgres -h localhost -p 5432 -v D:\RGSA_DB\dump-postgres-202505091224
 DMP:- pg_restore -U postgres -d postgres -h localhost -p 5432 -v "D:\RGSA_DB\rgsa_schema_rgsa_03-12-2025.dmp
+Table Resorted :- psql -U postgres -h localhost -p 5432 -d accounting -f D:\RGSA_DB\ACCOUNTING\fy2526_payment_data_26.sql
+
 
 pg_restore -U postgres -d accounting -h localhost -Fd -p 5432 -j 8 -v D:\RGSA_DB\ACCOUNTING\accountingonline_mp__18122025
 
