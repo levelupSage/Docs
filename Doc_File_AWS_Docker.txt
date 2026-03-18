@@ -124,6 +124,19 @@ docker stop $(docker ps -q) ==> stop all container at once
 docker exec -it <container_name> mysql -u<username> -p
 mysql -h 54.209.158.239 -P 3306 -u<root> -p
 
+========================= Docker Desktop ============================
+
+PS C:\Users\NICSI> cd E:\A-Frontend\partnersinfinitytech 
+PS E:\A-Frontend\partnersinfinitytech> .\mvnw clean package  
+PS E:\A-Frontend\partnersinfinitytech> ls 
+
+PS E:\A-Frontend\partnersinfinitytech>docker build -t partners-app . 
+PS E:\A-Frontend\partnersinfinitytech> docker tag partners-app levelup360/partners-app
+PS E:\A-Frontend\partnersinfinitytech> docker push levelup360/partners-app
+
+docker run -d -p 8089:8080 --name partners-app partners-app_01:latest
+============================================================================
+
 ========================Docker Swarm Cluster================================
 docker swarm init --advertise-addr 192.168.99.121
 
@@ -251,3 +264,4 @@ docker run -d -p 9000:9000 -p 9443:9443 \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v portainer_data:/data \
     portainer/portainer-ce
+
