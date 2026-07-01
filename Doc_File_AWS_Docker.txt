@@ -265,3 +265,18 @@ docker run -d -p 9000:9000 -p 9443:9443 \
     -v portainer_data:/data \
     portainer/portainer-ce
 
+
+--goto path folder
+1. cd path
+2. docker compose up --build -d
+3. docker build -t levelup360/scrollpostmortem:v1 .
+4. docker push levelup360/scrollpostmortem:v1
+
+5. docker pull levelup360/scrollpostmortem:v1
+6. docker run -d --name scrollpostmortem --restart unless-stopped -p 8080:8080 -v ~/data:/data  --env-file ~/.env levelup360/scrollpostmortem:v1
+
+docker ps -a
+docker stop container_name
+docker rm container_name
+docker rmi image_name
+
