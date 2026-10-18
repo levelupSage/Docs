@@ -77,9 +77,6 @@ pg_dump -U postgres -d rgsa_demo -t users -F c -f /tmp/users.dump
 sh /opt/rgsademo/tomcat-8-rgsa/bin/shutdown.sh
 sh /opt/rgsademo/tomcat-8-rgsa/bin/startup.sh
 ----------------------------------------------------------------------------
-#$!%demo@798
-
-#$%lgd*798
 Using username "root".
 root@10.248.213.206's password:
 Register this system with Red Hat Insights: insights-client --register
@@ -235,22 +232,27 @@ secure_odisha_22=# \dt public.*
 =============================
 
 
----Message start-----
-Subject: Welcome to SecureSoft!
+==============================================================
 
-Body:
-Dear {User name Placeholder},
+1. Redis Start on the Docker
+ 
+	a. docker run -d --name redis-local -p 6379:6379 redis:7.4
+	
+	b. docker run -d --name redisinsight -p 5540:5540 redis/redisinsight:latest
+	
+	c. docker ps 
+	
+	Next time : -
 
-Your account on the SecureSoft platform has been successfully created. Please find the details of your account below:
+	a. docker start redis-local
+	
+	b.docker start redisinsight
+	
+	Close 
+	
+	a. docker stop redis-local redisinsight
 
-State: {state placeholder}
-Username: {username placeholder}
 
-Designation: {designation placeholder}
-
-Password: {password placeholder}
-
-For any assistance or inquiries, please contact our support team at {email id placeholder@gov.in/nic.in}.
 
 
 Thank you,
