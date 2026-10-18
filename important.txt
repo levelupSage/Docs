@@ -253,8 +253,3 @@ secure_odisha_22=# \dt public.*
 	
 	a. docker stop redis-local redisinsight
 
-
-
-
-Thank you,
-SecureSoft Team
