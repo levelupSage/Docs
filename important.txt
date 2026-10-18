@@ -17,6 +17,7 @@ pg_restore -U postgres -d postgres -h localhost -p 5432 -v D:\RGSA_DB\RGSA_01\rg
 D:\RGSA_DB\SECURESOFT\structure
 
 
+
 TMP: pg_restore -U postgres -d postgres -h localhost -p 5432 -v D:\RGSA_DB\TMP_DB\rgsa_schema_rgsa_07-01-2025.dmp
 psql -U postgres -d postgres -h localhost -p 5432 -f D:\RGSA_DB\rgsa_schema_bkp.sql
 
