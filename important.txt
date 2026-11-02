@@ -253,3 +253,19 @@ secure_odisha_22=# \dt public.*
 	
 	a. docker stop redis-local redisinsight
 
+
+PS C:\Users\NICSI>docker exec -it redis-local redis-cli
+127.0.0.1:6379> 
+PS C:\Users\NICSI> docker exec -it redis-local redis-cli
+127.0.0.1:6379> SCAN 0 MATCH *bp-kpi-details* COUNT 100
+1) "0"
+2) (empty array)
+127.0.0.1:6379> EXISTS "/bp-kpi-details/{finYear}/{localBodyCode}/{schemeCd}::null:2025:4140:1769"
+(integer) 0
+127.0.0.1:6379> TYPE "/bp-kpi-details/{finYear}/{localBodyCode}/{schemeCd}::null:2025:4140:1769"
+none
+127.0.0.1:6379> GET "/bp-kpi-details/{finYear}/{localBodyCode}/{schemeCd}::null:2025:4140:1769"
+(nil)
+127.0.0.1:6379> TTL "/bp-kpi-details/{finYear}/{localBodyCode}/{schemeCd}::null:2025:4140:1769"
+(integer) -2
+127.0.0.1:6379> 
